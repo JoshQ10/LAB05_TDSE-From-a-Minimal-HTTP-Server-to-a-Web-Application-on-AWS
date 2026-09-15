@@ -186,7 +186,7 @@ stays a thin adapter around `ServerSocket`.
 ## Installation and build
 
 ```bash
-git clone <your-repository-url>
+git clone https://github.com/JoshQ10/LAB05_TDSE-From-a-Minimal-HTTP-Server-to-a-Web-Application-on-AWS.git
 cd LAB05_TDSE-From-a-Minimal-HTTP-Server-to-a-Web-Application-on-AWS
 
 # Download dependencies, compile, run tests, package the jar:
@@ -300,10 +300,36 @@ recorded here.
    application port (e.g. 8080) from the range your instructor allows.
 4. **Connect** using the approved method (Session Manager, EC2 Instance
    Connect, or SSH).
+
+   ![Fresh EC2 Instance Connect session](https://github.com/user-attachments/assets/f52ba63a-31de-4160-97e1-62e6ae7d1421)
+
 5. **Install a Java 17+ runtime**, e.g. on Amazon Linux:
    `sudo dnf install -y java-17-amazon-corretto` (or `java-21-amazon-corretto`).
-6. **Transfer** `lab05-http-server.jar` to the instance (`scp`, EC2
-   Instance Connect file upload, or equivalent) into e.g. `/opt/lab05/`.
+
+   ![java-17-amazon-corretto installing via dnf](https://github.com/user-attachments/assets/3abd65f2-6ced-4551-b494-b010c7eccc86)
+
+   Then create the directory the application will live in:
+   `sudo mkdir -p /opt/lab05/logs && sudo chown ec2-user:ec2-user /opt/lab05/logs`.
+
+   ![/opt/lab05 directory created and owned by ec2-user](https://github.com/user-attachments/assets/9624d650-1291-4b21-8b1e-adaded6f25f6)
+
+6. **Transfer** `lab05-http-server.jar` to the instance. EC2 Instance
+   Connect's browser terminal has no file upload, so if you don't have
+   the instance's original key pair handy, generate a throwaway SSH key
+   locally, authorize its public half by appending it to
+   `~/.ssh/authorized_keys` from the already-open browser terminal, and
+   then `scp` the jar in from your own machine using that key — see the
+   full command sequence captured below (permission fix, key
+   authorization, transfer verification, a manual smoke test, and the
+   start of the systemd unit setup from step 7):
+
+   ![Full transfer and verification terminal session](https://github.com/user-attachments/assets/3d91ab9e-a29f-42ee-95cf-af185b0ed64e)
+
+   Confirms the artifact arrived byte-for-byte intact (30353 bytes,
+   matching the local build):
+
+   ![lab05-http-server.jar present on the instance, 30353 bytes](https://github.com/user-attachments/assets/afc31802-4af1-4e5f-8a33-cd5b1aaea9d0)
+
 7. **Run it as a managed service** so it survives logout: copy
    [`deploy/lab05-http-server.service`](deploy/lab05-http-server.service)
    to `/etc/systemd/system/`, adjust the paths/user/port for the instance,
@@ -314,35 +340,48 @@ recorded here.
    sudo systemctl status lab05-http-server
    journalctl -u lab05-http-server -f
    ```
+
+   ![systemctl status showing active (running)](https://github.com/user-attachments/assets/d3c40ba1-b17a-4639-93a2-67a01a147163)
+
 8. **Verify locally on the instance first**:
    `curl -i http://localhost:8080/app/health`.
+
+   ![curl health and time checks plus tail -f on the instance](https://github.com/user-attachments/assets/c3690daa-cfba-4ad6-9382-c5525aa84697)
+
 9. **Verify remotely** by opening
    `http://<instance-public-address>:<port>/` in a browser and repeating
-   the functional test matrix above against the public address.
+   the functional test matrix above against the public address (see
+   [Evidence and results](#evidence-and-results) for the full run).
 10. **Stop cleanly** with `sudo systemctl stop lab05-http-server` when
-    done testing.
+    done testing, then follow [Mandatory AWS cleanup](#mandatory-aws-cleanup).
 
 ## Evidence and results
 
-Screenshots below were captured against the deployed EC2 instance
-(`docs/evidence/`); the instance's public IP shown in some of them is no
-longer valid once the [mandatory cleanup](#mandatory-aws-cleanup) below
-is performed.
+All screenshots below were captured against the actual deployed EC2
+instance at `18.212.239.152:8080`. That instance has since been
+terminated as part of the [mandatory cleanup](#mandatory-aws-cleanup), so
+the address itself is no longer reachable — the screenshots are the
+record of it having worked.
 
 **Remote deployment — home page served from the EC2 public address**
 
-![Home page running on EC2](docs/evidence/remote-home.png)
+![Home page running on EC2](https://github.com/user-attachments/assets/709a5175-61f4-4ef8-b872-9279ec06b9a7)
 
-**Protocol evidence — static resources and JSON services (`curl -i`)**
+**Protocol evidence — static resources and JSON services (`curl.exe -i`, run from the local PC against the public address)**
 
 | Case | Expected | Screenshot |
 |---|---|---|
-| `GET /` | 200, `text/html; charset=UTF-8` | ![curl home](docs/evidence/curl-home.png) |
-| `GET /app/greeting?name=Ada` | 200, JSON `{"message":"Hello, Ada!"}` | ![curl greeting](docs/evidence/curl-greeting.png) |
-| `GET /app/square?value=7` | 200, JSON `{"input":7,"square":49}` | ![curl square valid](docs/evidence/curl-square-valid.png) |
-| `GET /app/square?value=notanumber` | 400, `{"error":"'value' must be a number."}` | ![curl square invalid](docs/evidence/curl-square-invalid.png) |
-| `GET /nope.html` | 404 Not Found | ![curl 404](docs/evidence/curl-404.png) |
-| `POST /` | 405 Method Not Allowed | ![curl 405](docs/evidence/curl-405.png) |
+| `GET /` | 200, `text/html; charset=UTF-8` | ![curl home](https://github.com/user-attachments/assets/6edf46fd-25ff-465c-af29-05f745146c60) |
+| `GET /app/greeting?name=Ada` | 200, JSON `{"message":"Hello, Ada!"}` | ![curl greeting](https://github.com/user-attachments/assets/a5bf49a0-2727-4228-8bed-ae2fe5a95527) |
+| `GET /app/square?value=7` | 200, JSON `{"input":7,"square":49}` | ![curl square valid](https://github.com/user-attachments/assets/3a5bd016-8dcb-4205-9576-1a5d89d313e1) |
+| `GET /app/square?value=notanumber` | 400, `{"error":"'value' must be a number."}` | ![curl square invalid](https://github.com/user-attachments/assets/9aee5056-abff-4515-a345-fb97c3c362ed) |
+| `GET /nope.html` | 404 Not Found | ![curl 404](https://github.com/user-attachments/assets/2d9ddfde-1c38-4e6d-94a0-82569a6289cb) |
+| `POST /` | 405 Method Not Allowed | ![curl 405](https://github.com/user-attachments/assets/a9c01baf-6dab-4d44-bde2-bad0097f0560) |
+
+These six calls were made from a completely separate machine (the
+developer's own PC, not the EC2 instance itself), which is what actually
+proves the security group and public networking path work, not just that
+the JVM process runs.
 
 **Section 6.2 — observing the sequential limitation**
 
@@ -350,31 +389,34 @@ While `/app/slow` was in flight in one browser window, another action on
 the page shows the *Loading…* state until that request finishes — the
 server has not moved on to it yet:
 
-![Loading state while a slow request is in flight](docs/evidence/sequential-limit-demo.png)
-
-> To add these images: create a `docs/evidence/` folder at the repository
-> root and save each screenshot under the exact filename referenced
-> above — GitHub will then render them inline automatically. For a
-> stronger section 6.2 proof, also capture two browser windows
-> side-by-side (or the DevTools Network timeline) showing the second
-> window's request waiting behind the slow one.
+![Loading state while a slow request is in flight](https://github.com/user-attachments/assets/34971bcd-9489-4110-8dae-506fd9a90a4a)
 
 ## Mandatory AWS cleanup
 
 Do this only after every screenshot and evidence item above has been
 captured — it is irreversible. A forgotten running instance keeps
-generating charges even when nobody is using it.
+generating charges even when nobody is using it. **This has already been
+completed for this lab run**, evidence below.
 
 1. **Stop the application** (optional — terminating the instance stops it
    too, but this leaves logs readable first): `sudo systemctl stop lab05-http-server`.
 2. **Terminate the EC2 instance**: EC2 console → Instances → select it →
    Instance state → **Terminate instance** → confirm, and wait for its
    state to become `terminated`.
+
+   ![Terminate instance confirmation dialog](https://github.com/user-attachments/assets/074a2f51-d645-4bf2-8773-6194e018c4f4)
+   ![Instance state showing Terminated](https://github.com/user-attachments/assets/02ba757b-404e-49eb-bde1-1d608267c439)
+
 3. **Release any Elastic IP** you allocated for this lab (EC2 → Elastic
    IPs → select it → Actions → Release), if you created one — an
-   unattached Elastic IP can itself incur charges.
+   unattached Elastic IP can itself incur charges. (Not applicable here:
+   this lab used the instance's automatically assigned public IP, no
+   Elastic IP was allocated.)
 4. **Delete the lab's security group** once no instance references it
    anymore (EC2 → Security Groups → select it → Delete).
+
+   ![Delete security group confirmation dialog](https://github.com/user-attachments/assets/ae8538ef-814f-466c-9c3b-7d2c0ef4bcce)
+
 5. **Check the Billing/Cost dashboard** on the student account to confirm
    no resources from this lab are still generating cost.
 
@@ -440,64 +482,3 @@ Part of the starting-point content and code referenced by this lab
 `HttpServer` example) is based on the Java networking tutorials at
 [docs.oracle.com/javase/tutorial/networking](https://docs.oracle.com/javase/tutorial/networking/),
 as provided by the course material for this workshop.
-
-<img width="1600" height="776" alt="image" src="https://github.com/user-attachments/assets/f52ba63a-31de-4160-97e1-62e6ae7d1421" />
-<img width="1600" height="416" alt="image" src="https://github.com/user-attachments/assets/3abd65f2-6ced-4551-b494-b010c7eccc86" />
-<img width="699" height="93" alt="image" src="https://github.com/user-attachments/assets/9624d650-1291-4b21-8b1e-adaded6f25f6" />
-<img width="1600" height="654" alt="image" src="https://github.com/user-attachments/assets/3d91ab9e-a29f-42ee-95cf-af185b0ed64e" />
-<img width="1451" height="326" alt="image" src="https://github.com/user-attachments/assets/5b94f710-721e-4ab5-8e78-226adb6da5f4" />
-<img width="1408" height="318" alt="image" src="https://github.com/user-attachments/assets/10b74c93-9f27-4191-8ee8-159c8577c265" />
-<img width="835" height="453" alt="image" src="https://github.com/user-attachments/assets/074a2f51-d645-4bf2-8773-6194e018c4f4" />
-<img width="1600" height="617" alt="image" src="https://github.com/user-attachments/assets/02ba757b-404e-49eb-bde1-1d608267c439" />
-<img width="869" height="198" alt="image" src="https://github.com/user-attachments/assets/ae8538ef-814f-466c-9c3b-7d2c0ef4bcce" />
-
-pruebas curl y 6.2:
-
-1. <img width="1136" height="490" alt="image" src="https://github.com/user-attachments/assets/6edf46fd-25ff-465c-af29-05f745146c60" />
-
-2. <img width="1114" height="196" alt="image" src="https://github.com/user-attachments/assets/a5bf49a0-2727-4228-8bed-ae2fe5a95527" />
-
-3. <img width="1134" height="220" alt="image" src="https://github.com/user-attachments/assets/3a5bd016-8dcb-4205-9576-1a5d89d313e1" />
-
-4. <img width="1129" height="184" alt="image" src="https://github.com/user-attachments/assets/9aee5056-abff-4515-a345-fb97c3c362ed" />
-
-5. <img width="1126" height="217" alt="image" src="https://github.com/user-attachments/assets/2d9ddfde-1c38-4e6d-94a0-82569a6289cb" />
-
-6. <img width="1118" height="208" alt="image" src="https://github.com/user-attachments/assets/a9c01baf-6dab-4d44-bde2-bad0097f0560" />
-
-7. <img width="776" height="338" alt="image" src="https://github.com/user-attachments/assets/34971bcd-9489-4110-8dae-506fd9a90a4a" />
-
-
-pagina funcional y verificacion local:
-<img width="1731" height="905" alt="image" src="https://github.com/user-attachments/assets/709a5175-61f4-4ef8-b872-9279ec06b9a7" />
-
-<img width="1434" height="346" alt="image" src="https://github.com/user-attachments/assets/c3690daa-cfba-4ad6-9382-c5525aa84697" />
-
-
-paso 7 servicio corriendo
-<img width="1316" height="385" alt="image" src="https://github.com/user-attachments/assets/d3c40ba1-b17a-4639-93a2-67a01a147163" />
-
-
-jar paso correctamente a la maquina virtual con la llave nueva creada
-<img width="849" height="91" alt="image" src="https://github.com/user-attachments/assets/afc31802-4af1-4e5f-8a33-cd5b1aaea9d0" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
