@@ -1,0 +1,60 @@
+:root {
+  color-scheme: light dark;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+body {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  line-height: 1.5;
+}
+
+.banner {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.card {
+  border: 1px solid #8884;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-block: 1rem;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+
+button {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+}
+
+pre#result {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background: #8882;
+  padding: 0.75rem;
+  border-radius: 6px;
+  min-height: 1.5rem;
+}
+
+.error {
+  color: #c0392b;
+  font-weight: 600;
+}
+
+.photo {
+  max-width: 100%;
+  border-radius: 8px;
+}

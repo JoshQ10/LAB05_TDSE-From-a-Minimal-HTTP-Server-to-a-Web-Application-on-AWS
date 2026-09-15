@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lab05 Mini Web App</title>
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header>
+  <img src="/images/banner.png" alt="Lab05 banner" class="banner">
+  <h1>Lab05 — Sequential HTTP Mini Application</h1>
+  <p>Plain sockets, one connection at a time, on the server side. Fetch calls on the client side.</p>
+</header>
+
+<main>
+  <section class="card">
+    <h2>Greeting service</h2>
+    <form id="greeting-form">
+      <label for="name-input">Name</label>
+      <input id="name-input" name="name" type="text" placeholder="e.g. Ada" required>
+      <button type="submit">Greet me</button>
+    </form>
+  </section>
+
+  <section class="card">
+    <h2>Square service</h2>
+    <form id="square-form">
+      <label for="value-input">Number</label>
+      <input id="value-input" name="value" type="number" step="any" placeholder="e.g. 7" required>
+      <button type="submit">Compute square</button>
+    </form>
+  </section>
+
+  <section class="card">
+    <h2>Server time</h2>
+    <button id="time-button" type="button">Get server time</button>
+  </section>
+
+  <section class="card">
+    <h2>Slow request (concurrency demo)</h2>
+    <p>Open this page in a second window, click this button here first, then immediately
+       click any button in the other window. The second request waits.</p>
+    <button id="slow-button" type="button">Trigger 5s slow request</button>
+  </section>
+
+  <section class="card" aria-live="polite">
+    <h2>Result</h2>
+    <div id="loading" hidden>Loading…</div>
+    <pre id="result"></pre>
+    <p id="error" class="error" hidden></p>
+  </section>
+
+  <section class="card">
+    <h2>Static image sample</h2>
+    <img src="/images/photo.jpg" alt="Sample photo served by the Java server" class="photo">
+  </section>
+</main>
+
+<script src="/app.js"></script>
+</body>
+</html>

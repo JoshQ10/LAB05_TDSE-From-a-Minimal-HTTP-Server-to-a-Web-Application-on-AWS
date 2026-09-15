@@ -1,0 +1,50 @@
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+release.properties
+dependency-reduced-pom.xml
+
+# Compiled class files
+*.class
+
+# IDE metadata
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.settings/
+.classpath
+.project
+.factorypath
+nbproject/
+.metadata/
+
+# OS metadata
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+logs/
+
+# Environment / secrets — never commit credentials or keys
+.env
+.env.*
+*.pem
+*.ppk
+*.key
+*.p12
+*.pfx
+credentials
+credentials.*
+.aws/
+aws-exports.js
+
+# Misc temp
+*.tmp
+*.bak
+*~

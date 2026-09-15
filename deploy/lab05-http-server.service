@@ -1,0 +1,29 @@
+# systemd unit for running the Lab05 HTTP server as a managed background
+# service on the EC2 instance. Copy to /etc/systemd/system/ and adjust
+# User/WorkingDirectory/paths to match the target machine, then:
+#
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now lab05-http-server
+#   sudo systemctl status lab05-http-server
+#   journalctl -u lab05-http-server -f      # follow logs
+#   sudo systemctl stop lab05-http-server   # clean shutdown
+#
+# See README.md "AWS deployment" for the full procedure.
+
+[Unit]
+Description=Lab05 sequential HTTP mini web application
+After=network.target
+
+[Service]
+Type=simple
+User=ec2-user
+WorkingDirectory=/opt/lab05
+Environment=SERVER_PORT=8080
+ExecStart=/usr/bin/java -jar /opt/lab05/lab05-http-server.jar
+Restart=on-failure
+RestartSec=5
+StandardOutput=append:/opt/lab05/logs/lab05.log
+StandardError=append:/opt/lab05/logs/lab05.log
+
+[Install]
+WantedBy=multi-user.target
