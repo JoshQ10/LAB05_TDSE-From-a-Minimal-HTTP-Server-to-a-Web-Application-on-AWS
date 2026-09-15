@@ -440,3 +440,49 @@ Part of the starting-point content and code referenced by this lab
 `HttpServer` example) is based on the Java networking tutorials at
 [docs.oracle.com/javase/tutorial/networking](https://docs.oracle.com/javase/tutorial/networking/),
 as provided by the course material for this workshop.
+
+<img width="1600" height="776" alt="image" src="https://github.com/user-attachments/assets/f52ba63a-31de-4160-97e1-62e6ae7d1421" />
+<img width="1600" height="416" alt="image" src="https://github.com/user-attachments/assets/3abd65f2-6ced-4551-b494-b010c7eccc86" />
+<img width="699" height="93" alt="image" src="https://github.com/user-attachments/assets/9624d650-1291-4b21-8b1e-adaded6f25f6" />
+<img width="1600" height="654" alt="image" src="https://github.com/user-attachments/assets/3d91ab9e-a29f-42ee-95cf-af185b0ed64e" />
+<img width="1451" height="326" alt="image" src="https://github.com/user-attachments/assets/5b94f710-721e-4ab5-8e78-226adb6da5f4" />
+<img width="1408" height="318" alt="image" src="https://github.com/user-attachments/assets/10b74c93-9f27-4191-8ee8-159c8577c265" />
+<img width="835" height="453" alt="image" src="https://github.com/user-attachments/assets/074a2f51-d645-4bf2-8773-6194e018c4f4" />
+<img width="1600" height="617" alt="image" src="https://github.com/user-attachments/assets/02ba757b-404e-49eb-bde1-1d608267c439" />
+<img width="869" height="198" alt="image" src="https://github.com/user-attachments/assets/ae8538ef-814f-466c-9c3b-7d2c0ef4bcce" />
+
+pruebas curl y 6.2:
+<img width="869" height="198" alt="image" src="https://github.com/user-attachments/assets/d78bc3ea-589e-4dfd-a2f1-1c3ae8c9d9cd" />
+<img width="869" height="198" alt="image" src="https://github.com/user-attachments/assets/7e0cac65-30b7-45c2-851a-5274dcd78fd8" />
+<img width="869" height="198" alt="image" src="https://github.com/user-attachments/assets/01868979-4ab6-45c4-920e-040b9dc4bfbf" />
+<img width="869" height="198" alt="image" src="https://github.com/user-attachments/assets/962b39a0-30e6-4ecd-a25b-de1b058ba75c" />
+<img width="869" height="198" alt="image" src="https://github.com/user-attachments/assets/8db38688-edad-486d-b058-7218deed3811" />
+<img width="869" height="198" alt="image" src="https://github.com/user-attachments/assets/88207543-49a9-4199-87ed-9c022028446d" />
+<img width="869" height="198" alt="image" src="https://github.com/user-attachments/assets/41699e65-1f72-470c-9676-b960a30f1ee7" />
+
+pagina funcional y verificacion local:
+<img width="869" height="198" alt="image" src="https://github.com/user-attachments/assets/210f7fbd-87a1-493a-82ef-bbf2964ebbfc" />
+<img width="869" height="198" alt="image" src="https://github.com/user-attachments/assets/3fad8c65-5e13-4c7d-b639-5ca1c14875ac" />
+
+paso 7
+<img width="869" height="198" alt="image" src="https://github.com/user-attachments/assets/5b9dbe36-e3c5-479e-b5f0-c167821b022d" />
+
+jar paso correctamente a la maquina virtual con la llave nueva creada
+<img width="869" height="198" alt="image" src="https://github.com/user-attachments/assets/484d786d-82a9-4dcb-8248-2e0c180a5d37" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
