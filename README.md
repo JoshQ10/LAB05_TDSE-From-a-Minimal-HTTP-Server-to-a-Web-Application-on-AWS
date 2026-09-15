@@ -452,23 +452,38 @@ as provided by the course material for this workshop.
 <img width="869" height="198" alt="image" src="https://github.com/user-attachments/assets/ae8538ef-814f-466c-9c3b-7d2c0ef4bcce" />
 
 pruebas curl y 6.2:
-<img width="869" height="198" alt="image" src="https://github.com/user-attachments/assets/d78bc3ea-589e-4dfd-a2f1-1c3ae8c9d9cd" />
-<img width="869" height="198" alt="image" src="https://github.com/user-attachments/assets/7e0cac65-30b7-45c2-851a-5274dcd78fd8" />
-<img width="869" height="198" alt="image" src="https://github.com/user-attachments/assets/01868979-4ab6-45c4-920e-040b9dc4bfbf" />
-<img width="869" height="198" alt="image" src="https://github.com/user-attachments/assets/962b39a0-30e6-4ecd-a25b-de1b058ba75c" />
-<img width="869" height="198" alt="image" src="https://github.com/user-attachments/assets/8db38688-edad-486d-b058-7218deed3811" />
-<img width="869" height="198" alt="image" src="https://github.com/user-attachments/assets/88207543-49a9-4199-87ed-9c022028446d" />
-<img width="869" height="198" alt="image" src="https://github.com/user-attachments/assets/41699e65-1f72-470c-9676-b960a30f1ee7" />
+
+1. <img width="1136" height="490" alt="image" src="https://github.com/user-attachments/assets/6edf46fd-25ff-465c-af29-05f745146c60" />
+
+2. <img width="1114" height="196" alt="image" src="https://github.com/user-attachments/assets/a5bf49a0-2727-4228-8bed-ae2fe5a95527" />
+
+3. <img width="1134" height="220" alt="image" src="https://github.com/user-attachments/assets/3a5bd016-8dcb-4205-9576-1a5d89d313e1" />
+
+4. <img width="1129" height="184" alt="image" src="https://github.com/user-attachments/assets/9aee5056-abff-4515-a345-fb97c3c362ed" />
+
+5. <img width="1126" height="217" alt="image" src="https://github.com/user-attachments/assets/2d9ddfde-1c38-4e6d-94a0-82569a6289cb" />
+
+6. <img width="1118" height="208" alt="image" src="https://github.com/user-attachments/assets/a9c01baf-6dab-4d44-bde2-bad0097f0560" />
+
+7. <img width="776" height="338" alt="image" src="https://github.com/user-attachments/assets/34971bcd-9489-4110-8dae-506fd9a90a4a" />
+
 
 pagina funcional y verificacion local:
-<img width="869" height="198" alt="image" src="https://github.com/user-attachments/assets/210f7fbd-87a1-493a-82ef-bbf2964ebbfc" />
-<img width="869" height="198" alt="image" src="https://github.com/user-attachments/assets/3fad8c65-5e13-4c7d-b639-5ca1c14875ac" />
+<img width="1731" height="905" alt="image" src="https://github.com/user-attachments/assets/709a5175-61f4-4ef8-b872-9279ec06b9a7" />
 
-paso 7
-<img width="869" height="198" alt="image" src="https://github.com/user-attachments/assets/5b9dbe36-e3c5-479e-b5f0-c167821b022d" />
+<img width="1434" height="346" alt="image" src="https://github.com/user-attachments/assets/c3690daa-cfba-4ad6-9382-c5525aa84697" />
+
+
+paso 7 servicio corriendo
+<img width="1316" height="385" alt="image" src="https://github.com/user-attachments/assets/d3c40ba1-b17a-4639-93a2-67a01a147163" />
+
 
 jar paso correctamente a la maquina virtual con la llave nueva creada
-<img width="869" height="198" alt="image" src="https://github.com/user-attachments/assets/484d786d-82a9-4dcb-8248-2e0c180a5d37" />
+<img width="849" height="91" alt="image" src="https://github.com/user-attachments/assets/afc31802-4af1-4e5f-8a33-cd5b1aaea9d0" />
+
+
+
+
 
 
 
